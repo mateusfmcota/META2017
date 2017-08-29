@@ -1,22 +1,37 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaWPF", "MetaWPF\MetaWPF.csproj", "{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		64|Any CPU = 64|Any CPU
+		64|x64 = 64|x64
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.64|Any CPU.ActiveCfg = 64|Any CPU
+		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.64|Any CPU.Build.0 = 64|Any CPU
+		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.64|x64.ActiveCfg = 64|x64
+		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.64|x64.Build.0 = 64|x64
 		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.Debug|x64.ActiveCfg = Debug|x64
+		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.Debug|x64.Build.0 = Debug|x64
 		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.Release|x64.ActiveCfg = Release|x64
+		{C4DC4DD9-281E-489D-BEDE-07AFBFDA4611}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81264FC0-73AE-43EB-A15C-D4B346B3DE82}
 	EndGlobalSection
 EndGlobal

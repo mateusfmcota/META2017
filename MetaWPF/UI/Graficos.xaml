@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
-        Title="Power Chart" Height="565.07" Width="1224.206" ResizeMode="CanMinimize">
+        Title="Power Chart" Height="565.07" Width="1224.206" ResizeMode="CanMinimize" Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="611*"/>
@@ -15,75 +15,90 @@
             <RowDefinition Height="251*"/>
             <RowDefinition Height="284*"/>
         </Grid.RowDefinitions>
-        <Label Content="Dados em tempo real" HorizontalAlignment="Left" Margin="10,3.5,0,0" VerticalAlignment="Top" Width="134" Height="26"/>
-        <StackPanel HorizontalAlignment="Left" Height="187" Margin="29,48,0,0" VerticalAlignment="Top" Width="560" RenderTransformOrigin="0.25,0.426" Orientation="Horizontal">
-            <StackPanel Width="186">
-                <Label Content="Corrente" HorizontalAlignment="Center" Margin="0,0,9.6,0" Width="176" FontSize="14" HorizontalContentAlignment="Center" Height="31"/>
-                <lvc:Gauge x:Name="gaugeCorrent"
+        <TabControl HorizontalAlignment="Left" Height="264" Margin="10.4,9.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="579" Grid.Column="1">
+            <TabItem Header="Grafico da historia" Margin="-2,0,-0.4,0" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left">
+                <Grid Background="#FFE5E5E5">
+                    <lvc:CartesianChart x:Name="graficoHistorico" Series="{Binding SeriesCollection}" LegendLocation="Right" Margin="0,0,-0.4,0" >
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"/>
+                        </lvc:CartesianChart.AxisY>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="" Labels="{Binding Labels}"/>
+                        </lvc:CartesianChart.AxisX>
+                    </lvc:CartesianChart>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <TabControl HorizontalAlignment="Left" Height="264" Margin="10,9.8,0,0" VerticalAlignment="Top" Width="590" Grid.Row="1">
+            <TabItem Header="Informações complementares" Margin="-2,0,0,0">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel HorizontalAlignment="Left" Height="220" Margin="2,6,0,0" VerticalAlignment="Top" Width="558" Grid.Column="1">
+                        <WrapPanel>
+                            <Label Content="Maximo valor gasto:" Width="250"/>
+                            <TextBox x:Name="tbMaxVl" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Label Content="Minimo valor gasto:" Width="250"/>
+                            <TextBox x:Name="tbMinVl" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Label Content="Quantidade gasta na ultima hora:" Width="250"/>
+                            <TextBox x:Name="tbC3" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Label Content="Quantidade total gasta:" Width="250"/>
+                            <TextBox x:Name="tbC4" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Label Content="Media de Kilowatts gastos na ultima hora:" Width="250"/>
+                            <TextBox x:Name="tbKWMedia" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
+                        </WrapPanel>
+                        <WrapPanel/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <TabControl Grid.Column="1" HorizontalAlignment="Left" Height="225" Margin="10.4,10,0,0" VerticalAlignment="Top" Width="579">
+            <TabItem Header="Grafico em tempo real" Margin="-2,0,0,0">
+                <Grid Background="#FFE5E5E5">
+                    <lvc:CartesianChart x:Name="graficoTempoReal" Series="{Binding SeriesCollection}" LegendLocation="Right" Margin="0,0,-0.4,-0.4" >
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"/>
+                        </lvc:CartesianChart.AxisY>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="" Labels="{Binding Labels}"/>
+                        </lvc:CartesianChart.AxisX>
+                    </lvc:CartesianChart>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <TabControl Margin="10,10,9.6,16.2">
+            <TabItem Header="Dados em tempo real" Margin="-2,0,0,0" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel HorizontalAlignment="Left" Height="187" Margin="10,10,0,-5.8" VerticalAlignment="Top" Width="560" RenderTransformOrigin="0.25,0.426" Orientation="Horizontal">
+                        <StackPanel Width="186">
+                            <Label Content="Corrente" HorizontalAlignment="Center" Margin="0,0,9.6,0" Width="176" FontSize="14" HorizontalContentAlignment="Center" Height="31"/>
+                            <lvc:Gauge x:Name="gaugeCorrent"
                    From="0" To="200" Value="60" Margin="0,0,9.6,0" Height="108"/>
-            </StackPanel>
-            <StackPanel Width="186">
-                <Label Content="Tensão" HorizontalAlignment="Center" Margin="0,0,9.6,0" Width="176" FontSize="14" HorizontalContentAlignment="Center" Height="31"/>
-                <lvc:Gauge x:Name="gaugeTensao"
-            From="0" To="200" Value="50" RenderTransformOrigin="2.313,2.488" Margin="0,0,9.6,0" Height="108"/>
-            </StackPanel>
-            <StackPanel Width="186" Margin="0,0,0,0.2">
-                <Label Content="Potencia" HorizontalAlignment="Center" Margin="0,0,9.6,0" Width="176" FontSize="14" HorizontalContentAlignment="Center" Height="31"/>
-                <lvc:Gauge x:Name="gaugePotencia" Margin="0,0,9.6,0"
+                        </StackPanel>
+                        <StackPanel Width="186" Margin="0,0,0,0.2">
+                            <Label Content="Potencia" HorizontalAlignment="Center" Margin="0,0,9.6,0" Width="176" FontSize="14" HorizontalContentAlignment="Center" Height="31"/>
+                            <lvc:Gauge x:Name="gaugePotencia" Margin="0,0,9.6,0"
             From="0" To="200" Value="50" Height="108"/>
-            </StackPanel>
-        </StackPanel>
-        <WrapPanel HorizontalAlignment="Left" Height="228" Margin="29.4,31.8,0,0" VerticalAlignment="Top" Width="558" Grid.Row="1" Grid.Column="1">
-            <lvc:CartesianChart x:Name="graficoHistorico" Series="{Binding SeriesCollection}" LegendLocation="Right" Width="558" Height="227" >
-                <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"/>
-                </lvc:CartesianChart.AxisY>
-                <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Title="" Labels="{Binding Labels}"/>
-                </lvc:CartesianChart.AxisX>
-            </lvc:CartesianChart>
-        </WrapPanel>
-        <WrapPanel HorizontalAlignment="Left" Height="100" Margin="297,129,0,0" VerticalAlignment="Top" Width="100"/>
-        <WrapPanel HorizontalAlignment="Left" Height="232" Margin="29.4,19,0,0" VerticalAlignment="Top" Width="560" Grid.Column="1">
-            <lvc:CartesianChart x:Name="graficoTempoReal" Series="{Binding SeriesCollection}" LegendLocation="Right" Width="559" Height="230" >
-                <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="Sales" LabelFormatter="{Binding YFormatter}"/>
-                </lvc:CartesianChart.AxisY>
-                <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Title="" Labels="{Binding Labels}"/>
-                </lvc:CartesianChart.AxisX>
-            </lvc:CartesianChart>
-        </WrapPanel>
-        <StackPanel HorizontalAlignment="Left" Height="181" Margin="42,45.8,0,0" VerticalAlignment="Top" Width="564" Grid.Row="1">
-            <WrapPanel>
-                <Label Content="Maximo valor gasto:" Width="250"/>
-                <TextBox x:Name="tbMaxVl" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Minimo valor gasto:" Width="250"/>
-                <TextBox x:Name="tbMinVl" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Quantidade gasta na ultima hora:" Width="250"/>
-                <TextBox x:Name="tbC3" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Quantidade total gasta:" Width="250"/>
-                <TextBox x:Name="tbC4" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Media de Kilowatts gastos na ultima hora:" Width="250"/>
-                <TextBox x:Name="tbKWMedia" Height="23" TextWrapping="Wrap" Text="" Width="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" IsEnabled="False"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Label"/>
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="Label"/>
-            </WrapPanel>
-        </StackPanel>
-        <Label Content="Grafico em tempo real" HorizontalAlignment="Left" Margin="10.4,4,0,0" VerticalAlignment="Top" Width="134" Height="26" Grid.Column="1"/>
-        <Label Content="Grafico da historia" HorizontalAlignment="Left" Margin="10.4,15.8,0,0" VerticalAlignment="Top" Width="134" Height="26" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="Informações complementares" HorizontalAlignment="Left" Margin="10,13.8,0,0" VerticalAlignment="Top" Width="172" Height="26" Grid.Row="1"/>
+                        </StackPanel>
+                        <StackPanel Width="186">
+                            <Label Content="Tensão" HorizontalAlignment="Center" Margin="0,0,9.6,0" Width="176" FontSize="14" HorizontalContentAlignment="Center" Height="31"/>
+                            <lvc:Gauge x:Name="gaugeTensao"
+            From="0" To="200" Value="50" RenderTransformOrigin="2.313,2.488" Margin="0,0,9.6,0" Height="108"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

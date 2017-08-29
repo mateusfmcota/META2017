@@ -26,3 +26,4 @@ C:\Users\mateu\documents\visual studio 2017\Projects\MetaWPF\MetaWPF\bin\Debug\M
 C:\Users\mateu\documents\visual studio 2017\Projects\MetaWPF\MetaWPF\bin\Debug\MetaWPF.application
 C:\Users\mateu\documents\visual studio 2017\Projects\MetaWPF\MetaWPF\obj\Debug\MetaWPF.exe.manifest
 C:\Users\mateu\documents\visual studio 2017\Projects\MetaWPF\MetaWPF\obj\Debug\MetaWPF.application
+C:\Users\mateu\documents\visual studio 2017\Projects\MetaWPF\MetaWPF\obj\Debug\MetaWPF.csproj.CoreCompileInputs.cache

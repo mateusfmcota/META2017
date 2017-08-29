@@ -57,22 +57,10 @@ namespace MetaWPF.UI
         {
             btConectar.Content = "Desconectar";
             sis.Conectar(cbPorts.Text);
-        }
-
-        private void gerarCampos()
-        {
-
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            sis.close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
             sis.iniciarSoftware();
+            MainWindow1.Close();
         }
+
     }
 }
 
